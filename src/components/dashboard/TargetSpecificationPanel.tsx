@@ -1,34 +1,15 @@
-import React, { useState } from "react";
+import "./dashboard.styles.scss";
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import {
-  Shield,
-  Globe,
-  Server,
-  Settings,
-  Database,
-  Network,
-  Lock,
-  Zap,
-  Eye,
-  Activity,
-  Brain,
-  Cpu,
-  Sparkles,
-} from "lucide-react";
+import { Shield, Globe, Server, Database, Network, Lock, Zap, Eye, Activity, Brain, Sparkles } from "lucide-react";
 
 interface TargetSpecificationPanelProps {
   onScanInitiate?: (targetData: {
@@ -611,7 +592,7 @@ const TargetSpecificationPanel = ({
             <div className="grid grid-cols-3 gap-2 text-xs text-center">
               <div className="text-slate-400">
                 <Database className="h-3 w-3 mx-auto mb-1" />
-                <span>SQLite DB</span>
+                <span>MySQL DB</span>
               </div>
               <div className="text-slate-400">
                 <Activity className="h-3 w-3 mx-auto mb-1" />
