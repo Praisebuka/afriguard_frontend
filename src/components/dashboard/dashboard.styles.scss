@@ -1,0 +1,35 @@
+
+.main-grid {
+    display: flex;
+    width: 100%;
+    // .left-side {
+//     width: 24rem;
+// }
+    .right-side {
+        width: 90%;
+    }
+}
+
+
+@media screen and (max-width: 1023px) {
+    .main-grid {
+        flex-direction: column;
+        .right-side {
+            width: 100%;
+        }
+    }
+}
+
+
+@media screen and (max-width:600px ) {
+    .nav-supposed-side {
+        display: none !important;
+    }
+
+    .tab-index {
+        width: auto;
+        button {
+            font-size: 0.65rem;
+        }
+    }
+}

@@ -143,7 +143,7 @@ const TargetSpecificationPanel = ({
   };
 
   return (
-    <Card className="w-full max-w-md scanner-card shadow-2xl border-2 border-emerald-500/20 relative overflow-hidden">
+    <Card className="w-full scanner-card shadow-2xl border-2 border-emerald-500/20 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-cyan-500/5 pointer-events-none" />
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 to-cyan-500" />
       <CardHeader className="bg-gradient-to-r from-emerald-900/20 to-cyan-900/20 border-b border-slate-700/50 relative">

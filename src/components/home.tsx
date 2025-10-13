@@ -1,20 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import TargetSpecificationPanel from "./dashboard/TargetSpecificationPanel";
 import VulnerabilityDashboard from "./dashboard/VulnerabilityDashboard";
 import { Button } from "./ui/button";
-import {
-  Shield,
-  AlertTriangle,
-  Activity,
-  RefreshCw,
-  Zap,
-  Database,
-  Network,
-  CheckCircle,
-  Eye,
-} from "lucide-react";
+import { Shield, AlertTriangle, Activity, RefreshCw, Database, CheckCircle, Eye } from "lucide-react";
 
 const Home = () => {
   const [scanInProgress, setScanInProgress] = useState(false);
@@ -3146,7 +3136,7 @@ This report contains confidential information. Distribution restricted to author
               </p>
             </div>
           </div>
-          <div className="flex gap-3">
+          <div className="flex gap-3 nav-supposed-side">
             <Button variant="outline" size="sm">
               <Activity className="mr-2 h-4 w-4" /> System Status
             </Button>
@@ -3160,24 +3150,24 @@ This report contains confidential information. Distribution restricted to author
         </div>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 relative z-10">
-        <div className="lg:col-span-1">
+      <div className="main-grid">
+        <div className="lg:col-span-1 left-side">
           <div className="relative">
             <TargetSpecificationPanel onScanInitiate={handleInitiateScan} />
-            {scanError && (
-              <div className="mt-4 p-4 bg-destructive/10 border border-destructive/50 rounded-lg">
-                <div className="flex items-center">
-                  <AlertTriangle className="h-5 w-5 text-destructive mr-2" />
-                  <p className="text-destructive text-sm font-medium">
-                    {scanError}
-                  </p>
+              {scanError && (
+                <div className="mt-4 p-4 bg-destructive/10 border border-destructive/50 rounded-lg">
+                  <div className="flex items-center">
+                    <AlertTriangle className="h-5 w-5 text-destructive mr-2" />
+                    <p className="text-destructive text-sm font-medium">
+                      {scanError}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
           </div>
         </div>
 
-        <div className="lg:col-span-3">
+        <div className="lg:col-span-3 right-side">
           <Card className="border-slate-700/30 bg-slate-900/30 backdrop-blur-xl">
             <CardContent className="p-6">
               <Tabs
