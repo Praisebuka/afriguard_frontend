@@ -1,50 +1,72 @@
-const REGISTERED_USERS_KEY = "registered_users";
 const ACTIVE_USER = "active_user";
 
-export interface IUserModel {
-  name: string;
-  username: string;
-  password: string;
-}
+export interface IUserModel { username: string; token?: string; }
 
-const addUser = (user: IUserModel) => {
-  let usersStr = localStorage.getItem(REGISTERED_USERS_KEY) || "[]";
-  let users = JSON.parse(usersStr) as IUserModel[];
-  users.push(user);
+const loginUser = async (username: string, password: string): Promise<IUserModel | null> => {
+  try {
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, password }),
+    });
 
-  localStorage.setItem(REGISTERED_USERS_KEY, JSON.stringify(users));
+    const result = await response.json();
+
+    if (response.ok && result.status === 'success') {
+      const user: IUserModel = {
+        username,
+        token: result.data?.token,
+      };
+      console.log(result);
+    //   localStorage.setItem(ACTIVE_USER, JSON.stringify(user));
+      return user;
+    }
+    return null;
+  } catch (error) {
+    console.error('Login API error:', error);
+    return null;
+  }
 };
 
-const isUsernameExists = (username: string): boolean => {
-  let usersStr = localStorage.getItem(REGISTERED_USERS_KEY) || "[]";
-  let users = JSON.parse(usersStr) as IUserModel[];
+const registerUser = async (name: string, email: string, phone: string, password: string): Promise<IUserModel | null> => {
+  try {
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/register`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, email, phone, password }),
+    });
 
-  let user = users.find((x) => x.username == username);
-  return user != null;
+    const result = await response.json();
+
+    if (response.ok && result.status === 'success') {
+      const user: IUserModel = {
+        username: email, // Using email as username for consistency
+        token: result.data?.token,
+      };
+      console.log(result);
+    //   localStorage.setItem(ACTIVE_USER, JSON.stringify(user));
+      return user;
+    }
+    return null;
+  } catch (error) {
+    console.error('Registration API error:', error);
+    return null;
+  }
 };
 
-const getUser = (username: string, password: string) => {
-  let usersStr = localStorage.getItem(REGISTERED_USERS_KEY) || "[]";
-  let users = JSON.parse(usersStr) as IUserModel[];
 
-  return users.find((x) => x.username == username && x.password == password);
-};
-
-const updateActiveUser = (user: IUserModel) => {
-  localStorage.setItem(ACTIVE_USER, JSON.stringify(user));
-};
-
-const getActiveUser = () => {
-  let usersStr = localStorage.getItem(ACTIVE_USER) || null;
-  if (usersStr == null) return null;
-
-  let user = JSON.parse(usersStr) as IUserModel;
-  return user;
+const getActiveUser = (): IUserModel | null => {
+  const userStr = localStorage.getItem(ACTIVE_USER);
+  if (!userStr) return null;
+  return JSON.parse(userStr) as IUserModel;
 };
 
 const removeActiveUser = () => {
   localStorage.removeItem(ACTIVE_USER);
 };
 
-export { REGISTERED_USERS_KEY, addUser, getUser, isUsernameExists, updateActiveUser, getActiveUser, removeActiveUser };
-
+export { ACTIVE_USER, loginUser, getActiveUser, removeActiveUser, registerUser };
