@@ -4,12 +4,8 @@ import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
 
 import { Alert, AlertDescription, AlertTitle } from "../components/ui/alert";
 
-const meta = {
-  title: "ui/Alert",
-  component: Alert,
-  tags: ["autodocs"],
-  argTypes: {},
-};
+const meta = { title: "ui/Alert", component: Alert, tags: ["autodocs"], };
+
 export default meta;
 
 export const Default = {
