@@ -5,7 +5,7 @@ export interface IUserModel { email: string; token?: string; name? :string }
 
 const loginUser = async (email: string, password: string): Promise<IUserModel | null> => {
   try {
-    const response = await fetch(`http://localhost:8000/api/v1/login`, {
+    const response = await fetch(`https://afriguard.myfamilycompanion.org/api/v1/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -43,16 +43,20 @@ const registerUser = async (name: string, email: string, phone: string, password
     });
 
     const result = await response.json();
+    // console.log(result.errors.email);
+    // console.log(response);
 
-    if (response.ok && result.status === 'success') {
+    if (response.ok && result.message === 'Registration Successful') {
       const user: IUserModel = {
-        email: email, // Using email as username for consistency
-        token: result.data?.token,
+        email: email,
+        token: result?.token,
+        name: result.user?.name
       };
-      console.log(result);
-    //   localStorage.setItem(ACTIVE_USER, JSON.stringify(user));
+    //   console.log(result);
+      localStorage.setItem(ACTIVE_USER, JSON.stringify(user));
       return user;
     }
+    
     return null;
   } catch (error) {
     console.error('Registration API error:', error);

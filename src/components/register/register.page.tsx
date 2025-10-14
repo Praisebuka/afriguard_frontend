@@ -37,7 +37,7 @@ const Register = () => {
       return;
     }
 
-    Swal.fire({ icon: 'success', title: 'Registration Successful', text: 'Your account has been created!', timer: 1500, showConfirmButton: false,
+    Swal.fire({ icon: 'success', title: 'Registration Successful', text: 'Your account has been created!', timer: 3000,
     }).then(() => {
       navigate("/dashboard");
     });

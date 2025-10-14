@@ -36,7 +36,7 @@ const Login = () => {
       return;
     }
 
-    Swal.fire({ icon: 'success', title: 'Login Successful', text: 'Welcome back ' + `${user?.name}` + '!', timer: 2000,
+    Swal.fire({ icon: 'success', title: 'Login Successful', text: 'Welcome back ' + `${user?.name}` + '!', timer: 3000,
     }).then(() => {
       navigate("/dashboard");
     });
