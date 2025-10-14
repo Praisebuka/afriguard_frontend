@@ -6,7 +6,7 @@ import VulnerabilityDashboard from "./dashboard/VulnerabilityDashboard";
 import { Button } from "./ui/button";
 import { Shield, AlertTriangle, Activity, RefreshCw, Database, CheckCircle, Eye } from "lucide-react";
 
-const Home = () => {
+const Dashboard = () => {
   const [scanInProgress, setScanInProgress] = useState(false);
   const [scanProgress, setScanProgress] = useState(0);
   const [scanResults, setScanResults] = useState<any>(null);
@@ -3923,4 +3923,4 @@ This report contains confidential information. Distribution restricted to author
   );
 };
 
-export default Home;
+export default Dashboard;
