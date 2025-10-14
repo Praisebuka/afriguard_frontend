@@ -1,26 +1,27 @@
 const ACTIVE_USER = "active_user";
 
-export interface IUserModel { username: string; token?: string; }
+export interface IUserModel { email: string; token?: string; name? :string }
+// const BASE_URL = import.meta.env.REACT_APP_BASE_URL || 'https://afriguard.myfamilycompanion.org/api/v1';
 
-const loginUser = async (username: string, password: string): Promise<IUserModel | null> => {
+const loginUser = async (email: string, password: string): Promise<IUserModel | null> => {
   try {
-    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/login`, {
+    const response = await fetch(`http://localhost:8000/api/v1/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ email, password }),
     });
 
     const result = await response.json();
 
-    if (response.ok && result.status === 'success') {
+    if (response.ok && result.message === 'Login Successful') {
       const user: IUserModel = {
-        username,
-        token: result.data?.token,
+        email,
+        token: result?.token,
+        name: result.user?.name
       };
-      console.log(result);
-    //   localStorage.setItem(ACTIVE_USER, JSON.stringify(user));
+      localStorage.setItem(ACTIVE_USER, JSON.stringify(user));
       return user;
     }
     return null;
@@ -32,7 +33,7 @@ const loginUser = async (username: string, password: string): Promise<IUserModel
 
 const registerUser = async (name: string, email: string, phone: string, password: string): Promise<IUserModel | null> => {
   try {
-    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/register`, {
+    const response = await fetch(`https://afriguard.myfamilycompanion.org/api/v1/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -44,7 +45,7 @@ const registerUser = async (name: string, email: string, phone: string, password
 
     if (response.ok && result.status === 'success') {
       const user: IUserModel = {
-        username: email, // Using email as username for consistency
+        email: email, // Using email as username for consistency
         token: result.data?.token,
       };
       console.log(result);
