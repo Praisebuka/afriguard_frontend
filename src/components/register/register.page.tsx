@@ -1,6 +1,8 @@
 import { addUser, isUsernameExists, IUserModel } from "@/hooks/localstorage";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2'
+
 
 const Register = () => {
   const [data, setData] = useState<IUserModel>({
@@ -41,7 +43,8 @@ const Register = () => {
 
     addUser(data);
     resetData();
-    setMessage("User registered. Jump to Login page");
+    Swal.fire({ title: "Successfully Registered!", text: "Kindly visit the login page if you're not automatically logged in", icon: "success" });
+    setMessage("Successfully registered");
   };
 
   return (

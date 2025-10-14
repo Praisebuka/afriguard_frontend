@@ -36,7 +36,7 @@ const Login = () => {
     }
 
     updateActiveUser(user);
-    navigate("/");
+    navigate("/dashboard");
   };
 
   return (
@@ -48,7 +48,7 @@ const Login = () => {
       <form onSubmit={handleFormSubmit}>
         <h3>Login Here</h3>
 
-        <label className="for-logins"> Username </label>
+        <label className="for-logins"> Email Address </label>
         <input type="text" placeholder="Email*" className="input-for-logins" value={data.username} id="username" required />
 
         <label className="for-logins"> Password </label>
