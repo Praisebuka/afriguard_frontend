@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { useRoutes, Routes, Route, Navigate, Outlet } from "react-router-dom";
-import Dashboard from "./components/dashboard";
+import Dashboard from "./components/dashboard/dashboard";
 import routes from "tempo-routes";
 import { getActiveUser } from "./hooks/localstorage";
 import Login from "./components/login/login.page";

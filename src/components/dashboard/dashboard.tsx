@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import TargetSpecificationPanel from "./dashboard/TargetSpecificationPanel";
-import VulnerabilityDashboard from "./dashboard/VulnerabilityDashboard";
-import { Button } from "./ui/button";
+import TargetSpecificationPanel from "./TargetSpecificationPanel";
+import VulnerabilityDashboard from "./VulnerabilityDashboard";
+import { Button } from "../ui/button";
 import { Shield, AlertTriangle, Activity, RefreshCw, Database, CheckCircle, Eye } from "lucide-react";
 
 const Dashboard = () => {
