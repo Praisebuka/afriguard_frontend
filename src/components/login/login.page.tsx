@@ -1,4 +1,4 @@
-// import "./login.styles.css";
+import "./login.styles.css";
 import { getUser, updateActiveUser } from "@/hooks/localstorage";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -63,7 +63,7 @@ const Login = () => {
           onChange={handleInputChange}
         />
 
-        <button>Log In</button>
+        <button> Log In </button>
         <div className="social">
           <h4>
             <Link to="/register">Register</Link>
