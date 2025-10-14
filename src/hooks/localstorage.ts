@@ -5,6 +5,7 @@ export interface IUserModel { email: string; token?: string; name? :string }
 
 const loginUser = async (email: string, password: string): Promise<IUserModel | null> => {
   try {
+    console.log("inside the try catch already ");
     const response = await fetch(`https://afriguard.myfamilycompanion.org/api/v1/login`, {
       method: 'POST',
       headers: {
@@ -15,6 +16,8 @@ const loginUser = async (email: string, password: string): Promise<IUserModel | 
     });
 
     const result = await response.json();
+    console.log(response);
+    console.log(result);
 
     if (response.ok && result.message === 'Login Successful') {
       const user: IUserModel = {
