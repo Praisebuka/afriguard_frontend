@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { useRoutes, Routes, Route, Navigate, Outlet } from "react-router-dom";
 import Dashboard from "./components/dashboard/dashboard";
-import routes from "tempo-routes";
+// import routes from "tempo-routes";
 import { getActiveUser } from "./hooks/localstorage";
 import Login from "./components/login/login.page";
 import Register from "./components/register/register.page";
@@ -19,7 +19,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
           </Route>
         </Routes>
-        {import.meta.env.VITE_TEMPO === "true" && useRoutes(routes)}
+        {/* {import.meta.env.VITE_TEMPO === "true" && useRoutes(routes)} */}
       </>
     </Suspense>
   );

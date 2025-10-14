@@ -698,7 +698,7 @@ const Dashboard = () => {
           severity: "high" as const,
           exploitPotential: "confirmed" as const,
           category: "web",
-          owaspCategory: "A03:2021-Injection",
+          owaspCategory: "A07:2028-malware",
           description:
             "Reflected XSS vulnerability in search parameter, stored XSS in user comments.",
           impact:
