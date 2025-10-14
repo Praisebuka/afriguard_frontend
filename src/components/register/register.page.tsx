@@ -30,7 +30,7 @@ const Register = () => {
     event.preventDefault();
 
     if (data.name == "" || data.username == "" || data.password == "") {
-      setMessage("Please fill all the field");
+      setMessage("Please fill all the required field");
       return;
     }
 
@@ -53,39 +53,21 @@ const Register = () => {
       <form onSubmit={handleFormSubmit}>
         <h3>Register Here</h3>
 
-        <label>Name</label>
-        <input
-          type="text"
-          placeholder="Name"
-          id="name"
-          value={data.name}
-          onChange={handleInputChange}
-        />
+        <label className="for-logins"> Name </label>
+        <input type="text" placeholder="Name*" className="input-for-logins" id="name" value={data.name} required />
 
-        <label>Username</label>
-        <input
-          type="text"
-          placeholder="Email"
-          id="username"
-          value={data.username}
-          onChange={handleInputChange}
-        />
+        <label className="for-logins"> Username </label> 
+        <input type="text" placeholder="Email*" className="input-for-logins" id="username" value={data.username} required />
 
-        <label>Password</label>
-        <input
-          type="password"
-          placeholder="Password"
-          id="password"
-          value={data.password}
-          onChange={handleInputChange}
-        />
+        <label className="for-logins"> Password </label> 
+        <input type="password" placeholder="Password*" className="input-for-logins" id="password" value={data.password} required />
 
-        <button>Register</button>
+        <button className="btn-for-logins"> Register </button>
         <div className="social">
           {message && <p>{message}</p>}
           <br />
           <h4>
-            <Link to="/login">Login</Link>
+            Already have an account? <Link to="/login" style={{ textDecoration: 'underline' }}> Login here </Link>
           </h4>
         </div>
       </form>

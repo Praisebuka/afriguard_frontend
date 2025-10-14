@@ -66,13 +66,13 @@ form h3{
     text-align: center;
 }
 
-/* label{
+label.for-logins {
     display: block;
     margin-top: 30px;
     font-size: 16px;
     font-weight: 500;
-} */
-input{
+}
+input.input-for-logins {
     display: block;
     height: 50px;
     width: 100%;
@@ -86,7 +86,7 @@ input{
 ::placeholder{
     color: #e5e5e5;
 }
-button{
+button.btn-for-logins {
     margin-top: 50px;
     width: 100%;
     background-color: #ffffff;
@@ -100,6 +100,11 @@ button{
 .social{
   margin-top: 30px;
   display: flex;
+  flex-direction: column;
+  p {
+    align-items: center;
+    text-align: center;
+  }
 }
 .social div{
   background: red;

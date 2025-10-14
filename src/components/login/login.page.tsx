@@ -11,6 +11,8 @@ interface ILoginModel {
 const Login = () => {
   const [data, setData] = useState<ILoginModel>({ username: "", password: "" });
   const navigate = useNavigate();
+  
+  const [message, setMessage] = useState<string>("");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const id = event.target.id;
@@ -22,7 +24,8 @@ const Login = () => {
     event.preventDefault();
 
     if (data.username == "" || data.password == "") {
-      alert("Please fill all the field");
+    //   alert("Please fill all the field");
+    setMessage("Please fill all the required field");
       return;
     }
 
@@ -45,29 +48,17 @@ const Login = () => {
       <form onSubmit={handleFormSubmit}>
         <h3>Login Here</h3>
 
-        <label>Username</label>
-        <input
-          type="text"
-          placeholder="Email"
-          value={data.username}
-          id="username"
-          onChange={handleInputChange}
-        />
+        <label className="for-logins"> Username </label>
+        <input type="text" placeholder="Email*" className="input-for-logins" value={data.username} id="username" required />
 
-        <label>Password</label>
-        <input
-          type="password"
-          placeholder="Password"
-          id="password"
-          value={data.password}
-          onChange={handleInputChange}
-        />
+        <label className="for-logins"> Password </label>
+        <input type="password" placeholder="Password*" className="input-for-logins" id="password" value={data.password}  required/>
 
-        <button> Log In </button>
+        <button className="btn-for-logins"> Log In </button>
         <div className="social">
-          <h4>
-            <Link to="/register">Register</Link>
-          </h4>
+            {message && <p>{message}</p>}
+            <br />
+          <h4> Don't have an account? <Link to="/register" style={{ textDecoration: 'underline' }}> Register here </Link> </h4>
         </div>
       </form>
     </>
