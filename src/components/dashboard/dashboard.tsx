@@ -5,6 +5,8 @@ import TargetSpecificationPanel from "./TargetSpecificationPanel";
 import VulnerabilityDashboard from "./VulnerabilityDashboard";
 import { Button } from "../ui/button";
 import { Shield, AlertTriangle, Activity, RefreshCw, Database, CheckCircle, Eye } from "lucide-react";
+import { useNavigate } from "react-router";
+import { removeActiveUser } from "@/hooks/localstorage";
 
 const Dashboard = () => {
   const [scanInProgress, setScanInProgress] = useState(false);
@@ -14,6 +16,12 @@ const Dashboard = () => {
   const [scanError, setScanError] = useState<string | null>(null);
   const [hasPerformedScan, setHasPerformedScan] = useState(false);
 
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    removeActiveUser();
+    navigate("/login");
+  };
+  
   // Professional pentester-grade scan initiation with advanced intelligence
   const handleInitiateScan = (targetData: {
     targetType: string;

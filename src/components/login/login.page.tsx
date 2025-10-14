@@ -2,16 +2,13 @@ import "./login.styles.css";
 import { getUser, updateActiveUser } from "@/hooks/localstorage";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
-interface ILoginModel {
-  username: string;
-  password: string;
-}
+interface ILoginModel { username: string; password: string; }
 
 const Login = () => {
   const [data, setData] = useState<ILoginModel>({ username: "", password: "" });
   const navigate = useNavigate();
-  
   const [message, setMessage] = useState<string>("");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,23 +17,38 @@ const Login = () => {
     setData({ ...data, [id]: value });
   };
 
-  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (data.username == "" || data.password == "") {
-    //   alert("Please fill all the field");
-    setMessage("Please fill all the required field");
+    if (data.username === "" || data.password === "") {
+      setMessage("Please fill all the required fields");
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Please fill all the required fields',
+      });
       return;
     }
 
-    const user = getUser(data.username, data.password);
-    if (user == null) {
-      alert("Username or password is incorrect");
+    const user = await loginUser(data.username, data.password);
+    if (!user) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Login Failed',
+        text: 'Invalid username or password',
+      });
       return;
     }
 
-    updateActiveUser(user);
-    navigate("/dashboard");
+    Swal.fire({
+      icon: 'success',
+      title: 'Login Successful',
+      text: 'Welcome back!',
+      timer: 1500,
+      showConfirmButton: false,
+    }).then(() => {
+      navigate("/dashboard");
+    });
   };
 
   return (
