@@ -23,7 +23,9 @@
 
 @media screen and (max-width:600px ) {
     .nav-supposed-side {
-        display: none !important;
+        button:first-child {
+            display: none !important;
+        }
     }
 
     .tab-index {

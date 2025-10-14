@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import TargetSpecificationPanel from "./TargetSpecificationPanel";
 import VulnerabilityDashboard from "./VulnerabilityDashboard";
 import { Button } from "../ui/button";
-import { Shield, AlertTriangle, Activity, RefreshCw, Database, CheckCircle, Eye } from "lucide-react";
+import { Shield, AlertTriangle, RefreshCw, CheckCircle, Eye, LogOut, LogIn } from "lucide-react";
 import { useNavigate } from "react-router";
-import { removeActiveUser } from "@/hooks/localstorage";
+import { getActiveUser, IUserModel, removeActiveUser } from "@/hooks/localstorage";
+import Swal from "sweetalert2";
 
 const Dashboard = () => {
   const [scanInProgress, setScanInProgress] = useState(false);
@@ -17,9 +18,20 @@ const Dashboard = () => {
   const [hasPerformedScan, setHasPerformedScan] = useState(false);
 
   const navigate = useNavigate();
+  const [activeUser, setActiveUser] = useState<IUserModel>();
+
+  useEffect(() => {
+    let user = getActiveUser();
+    if (user != null) setActiveUser(user);
+  }, []);
+
   const handleLogout = () => {
     removeActiveUser();
     navigate("/login");
+  };
+
+  const handleProfileClick = () => {
+    Swal.fire({ icon: 'info', title: 'Welcome Back!', text: `Hello ${activeUser?.name}, your profile section is under construction. Please give us a little more time to get settled`});
   };
   
   // Professional pentester-grade scan initiation with advanced intelligence
@@ -3145,15 +3157,27 @@ This report contains confidential information. Distribution restricted to author
             </div>
           </div>
           <div className="flex gap-3 nav-supposed-side">
-            <Button variant="outline" size="sm">
+            {/* <Button variant="outline" size="sm">
               <Activity className="mr-2 h-4 w-4" /> System Status
-            </Button>
-            <Button variant="outline" size="sm">
-              <Shield className="mr-2 h-4 w-4" /> Security Profile
-            </Button>
-            <Button variant="outline" size="sm">
-              <Database className="mr-2 h-4 w-4" /> AI Engine
-            </Button>
+            </Button> */}
+            {activeUser? ( <>
+                <Button variant="outline" size="sm" onClick={handleProfileClick}>
+                  <Shield className="mr-2 h-4 w-4" /> {activeUser?.name}'s Profile
+                </Button>
+
+                <Button variant="outline" size="sm" onClick={handleLogout}>
+                  <LogOut className="mr-2 h-4 w-4" /> Logout
+              </Button> 
+              </>)
+            : <>
+                <Button variant="outline" size="sm">
+                  <Shield className="mr-2 h-4 w-4" /> Profile
+                </Button>
+                <Button variant="outline" size="sm" onClick={ () => navigate('/login')}>
+                  <LogIn className="mr-2 h-4 w-4" /> Login
+                </Button>
+              </>
+            }
           </div>
         </div>
       </header>
