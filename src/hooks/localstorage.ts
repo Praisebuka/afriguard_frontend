@@ -10,7 +10,6 @@ const loginUser = async (email: string, password: string): Promise<IUserModel | 
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer base64:GD4ZUt2F8g05F1JDfbEjTrHUw3lhCNGdUUOrxyUNPnA=`,
       },
       body: JSON.stringify({ email, password }),
     });
