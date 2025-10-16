@@ -4,6 +4,7 @@ import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import IntroSection from "../intro";
 import AboutUs from "../about";
+import WhatWeOfferSection from "../whatweoffer/whatweoffer.page";
 
 const Home: React.FC = () => {
   // Simulate Laravel-like route helper
@@ -47,15 +48,7 @@ const Home: React.FC = () => {
 
       <main id="main">
         <AboutUs settings={aboutsettings} />
-        {/* 
-          <About />
-          <WhoAreWe />
-          <Schedule />
-          <Features />
-          <Gallery />
-          <Contact />
-          <Faq />
-        */}
+        <WhatWeOfferSection />
       </main>
 
       <Footer settings={settings} isAuthenticated={isAuthenticated} appName="AfriGuard" />
