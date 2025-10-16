@@ -31,13 +31,6 @@ const Home: React.FC = () => {
     footer_linkedin: "https://linkedin.com/company/AfriGuard",
   };
 
-  
-  const aboutsettings = {
-    about_description: "We are your smart go-to SME for scaling your system in terms of Cyber Security. We offer alot of combined cyber needed skills at such affordable & low prices",
-    about_where: " Kigali, Rwanda",
-    about_when: "Monday 10th November",
-  };
-
   // Determine if user is logged in (for now, just a mock)
   const isAuthenticated = false;
 
@@ -47,7 +40,7 @@ const Home: React.FC = () => {
       <IntroSection />
 
       <main id="main">
-        <AboutUs settings={aboutsettings} />
+        <AboutUs />
         <WhatWeOfferSection />
       </main>
 
