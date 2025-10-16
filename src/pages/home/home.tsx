@@ -2,6 +2,8 @@ import "./home.styles.scss";
 import React from "react";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
+import IntroSection from "../intro";
+import AboutUs from "../about";
 
 const Home: React.FC = () => {
   // Simulate Laravel-like route helper
@@ -28,14 +30,23 @@ const Home: React.FC = () => {
     footer_linkedin: "https://linkedin.com/company/AfriGuard",
   };
 
+  
+  const aboutsettings = {
+    about_description: "We are your smart go-to SME for scaling your system in terms of Cyber Security. We offer alot of combined cyber needed skills at such affordable & low prices",
+    about_where: " Kigali, Rwanda",
+    about_when: "Monday 10th November",
+  };
+
   // Determine if user is logged in (for now, just a mock)
   const isAuthenticated = false;
 
   return (
     <>
       <Header currentRouteName="home" route={route} appName="AfriGuard" />
+      <IntroSection />
 
       <main id="main">
+        <AboutUs settings={aboutsettings} />
         {/* 
           <About />
           <WhoAreWe />
