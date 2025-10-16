@@ -7,6 +7,8 @@ import AboutUs from "../about";
 import WhatWeOfferSection from "../whatweoffer/whatweoffer.page";
 import PlansPricing from "../pricing/pricing.page";
 import Partners from "../partners/partners.page";
+import ContactUs from "../contact";
+import Faq from "../faq/faq.page";
 
 const Home: React.FC = () => {
   // Simulate Laravel-like route helper
@@ -57,6 +59,52 @@ const Home: React.FC = () => {
     ],
   };
 
+  
+  const faqQuestions = {
+    1: [
+      {
+        id: 1,
+        question: "Commodi porro sint mollitia qui velit.",
+        answer: "Cumque qui iste sunt et veniam ipsam nihil. Voluptates ad ipsam velit voluptate repudiandae et. Asperiores quaerat velit aut omnis iste et et.",
+      },
+    ],
+    2: [
+      {
+        id: 2,
+        question: "Ipsa consequatur ratione omnis.",
+        answer: "Unde aut qui voluptatem optio qui sapiente. Ipsam aut veniam architecto quo. Corrupti sint consequuntur quo consequatur sequi error.",
+      },
+    ],
+    3: [
+      {
+        id: 3,
+        question: "Voluptatem voluptatem velit nesciunt odit.",
+        answer: "Ipsum enim saepe dolores laborum earum reiciendis error assumenda. Doloremque velit aperiam et voluptatem in.",
+      },
+    ],
+    4: [
+      {
+        id: 4,
+        question: "Magnam atque voluptas voluptate et.",
+        answer: "Exercitationem eligendi vitae quam quia consequatur. Unde minus autem voluptas accusamus dolorem.",
+      },
+    ],
+    5: [
+      {
+        id: 5,
+        question: "Molestiae fuga doloremque praesentium voluptates dolores voluptas molestiae alias.",
+        answer: "Laborum modi aut dignissimos consectetur quis vel nihil. Deserunt nihil omnis in ducimus voluptate deserunt laudantium. Quis aut est modi odio nisi soluta. Et eveniet dolor enim laborum nulla consequatur culpa temporibus.",
+      },
+    ],
+    6: [
+      {
+        id: 6,
+        question: "Molestiae fuga doloremque praesentium voluptates dolores voluptas molestiae alias.",
+        answer: "Laborum modi aut dignissimos consectetur quis vel nihil. Deserunt nihil omnis in ducimus voluptate deserunt laudantium. Quis aut est modi odio nisi soluta. Et eveniet dolor enim laborum nulla consequatur culpa temporibus.",
+      },
+    ],
+  };
+
 
   // Determine if user is logged in
   const isAuthenticated = false;
@@ -71,6 +119,8 @@ const Home: React.FC = () => {
         <WhatWeOfferSection />
         <PlansPricing schedules={schedules} />
         <Partners />
+        <ContactUs />
+        <Faq faqs={faqQuestions} />
       </main>
 
       <Footer settings={settings} isAuthenticated={isAuthenticated} appName="AfriGuard" />
