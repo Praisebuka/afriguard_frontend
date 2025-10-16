@@ -39,7 +39,7 @@ body{
     right: -30px;
     bottom: -80px;
 }
-form{
+form.login{
     width: 400px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
@@ -52,14 +52,14 @@ form{
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 50px 35px;
 }
-form *{
+form.login *{
     font-family: 'Poppins',sans-serif;
     color: #ffffff;
     letter-spacing: 0.5px;
     outline: none;
     border: none;
 }
-form h3{
+form.login h3{
     font-size: 32px;
     font-weight: 500;
     line-height: 42px;

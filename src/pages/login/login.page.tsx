@@ -48,7 +48,7 @@ const Login = () => {
         <div className="shape"></div>
         <div className="shape"></div>
       </div>
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleFormSubmit} className="login">
         <h3>Login Here</h3>
 
         <label className="for-logins"> Email Address </label>

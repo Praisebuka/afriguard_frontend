@@ -49,7 +49,7 @@ const Register = () => {
         <div className="shape"></div>
         <div className="shape"></div>
       </div>
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleFormSubmit} className="registeration">
         <h3>Register Here</h3>
 
         <label className="for-register"> Name </label>
