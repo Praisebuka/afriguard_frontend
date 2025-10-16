@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-interface Speaker { name: string, photo: { getUrl: () => string } }
+interface Speaker { name: string; photo: { getUrl: () => string } }
 
-interface Schedule { title: string, subtitle: string, speaker?: Speaker }
+interface Schedule { title: string; subtitle: string; speaker?: Speaker }
 
 interface Props { schedules: Record<number, Schedule[]> }
 
-
 const PlansPricing: React.FC<Props> = ({ schedules }) => {
+  const [activeTab, setActiveTab] = useState<number>(1);
+
   const planName = (key: number) => {
     if (key === 1) return 'Basic';
     if (key === 2) return 'Premium';
@@ -27,7 +28,7 @@ const PlansPricing: React.FC<Props> = ({ schedules }) => {
             const key = Number(keyStr);
             return (
               <li className="nav-item" key={key}>
-                <a className={`nav-link${key === 1 ? ' active' : ''}`} href={`#day-${key}`} role="tab" data-toggle="tab">
+                <a className={`nav-link${key === activeTab ? ' active' : ''}`} href={`#day-${key}`} role="tab" data-toggle="tab" onClick={(e) => { e.preventDefault(), setActiveTab(key) }}>
                   {planName(key)} Plan
                 </a>
               </li>
@@ -41,16 +42,13 @@ const PlansPricing: React.FC<Props> = ({ schedules }) => {
           {Object.entries(schedules).map(([keyStr, day]) => {
             const key = Number(keyStr);
             return (
-              <div
-                role="tabpanel"
-                className={`col-lg-9 tab-pane fade${key === 1 ? ' show active' : ''}`}
-                id={`day-${key}`}
-                key={key}
-              >
+              <div role="tabpanel" className={`col-lg-9 tab-pane fade${key === activeTab ? ' show active' : ''}`} id={`day-${key}`} key={key}>
                 {day.map((schedule, index) => (
                   <div className="row schedule-item" key={index}>
                     <div className="col-md-2">
-                      <time style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 10, }}> o </time>
+                      <time style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 10}}>
+                        o
+                      </time>
                     </div>
                     <div className="col-md-10">
                       {schedule.speaker && (
