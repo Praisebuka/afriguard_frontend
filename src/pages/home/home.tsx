@@ -6,6 +6,7 @@ import IntroSection from "../intro";
 import AboutUs from "../about";
 import WhatWeOfferSection from "../whatweoffer/whatweoffer.page";
 import PlansPricing from "../pricing/pricing.page";
+import Partners from "../partners/partners.page";
 
 const Home: React.FC = () => {
   // Simulate Laravel-like route helper
@@ -57,7 +58,7 @@ const Home: React.FC = () => {
   };
 
 
-  // Determine if user is logged in (for now, just a mock)
+  // Determine if user is logged in
   const isAuthenticated = false;
 
   return (
@@ -69,6 +70,7 @@ const Home: React.FC = () => {
         <AboutUs />
         <WhatWeOfferSection />
         <PlansPricing schedules={schedules} />
+        <Partners />
       </main>
 
       <Footer settings={settings} isAuthenticated={isAuthenticated} appName="AfriGuard" />
