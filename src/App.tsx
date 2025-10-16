@@ -5,13 +5,14 @@ import Dashboard from "./components/dashboard/dashboard";
 import { getActiveUser } from "./hooks/localstorage";
 import Login from "./pages/login/login.page";
 import Register from "./pages/register/register.page";
+import Home from "./pages/home/home";
 
 function App() {
   return (
     <Suspense fallback={<p>Loading...</p>}>
       <>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
