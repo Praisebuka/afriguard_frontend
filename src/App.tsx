@@ -3,8 +3,8 @@ import { useRoutes, Routes, Route, Navigate, Outlet } from "react-router-dom";
 import Dashboard from "./components/dashboard/dashboard";
 // import routes from "tempo-routes";
 import { getActiveUser } from "./hooks/localstorage";
-import Login from "./components/login/login.page";
-import Register from "./components/register/register.page";
+import Login from "./pages/login/login.page";
+import Register from "./pages/register/register.page";
 
 function App() {
   return (
