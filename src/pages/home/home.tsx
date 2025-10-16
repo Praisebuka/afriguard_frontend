@@ -5,6 +5,7 @@ import Footer from "@/components/footer/Footer";
 import IntroSection from "../intro";
 import AboutUs from "../about";
 import WhatWeOfferSection from "../whatweoffer/whatweoffer.page";
+import PlansPricing from "../pricing/pricing.page";
 
 const Home: React.FC = () => {
   // Simulate Laravel-like route helper
@@ -31,6 +32,31 @@ const Home: React.FC = () => {
     footer_linkedin: "https://linkedin.com/company/AfriGuard",
   };
 
+  const schedules = {
+    1: [
+      {
+        title: "Basic Surveillance",
+        subtitle: "Facere provident incidunt quos voluptas.",
+        speaker: { name: "Brenden Legros", photo: { getUrl: () => "/img/speakers/1.jpg" } },
+      },
+    ],
+    2: [
+      {
+        title: "Premium Security",
+        subtitle: "Our most popular plan for advanced users.",
+        speaker: { name: "Hubert Hirthe", photo: { getUrl: () => "/img/speakers/2.jpg" } },
+      },
+    ],
+    3: [
+      {
+        title: "Pro Monitoring",
+        subtitle: "Best for organizations needing real-time alerts.",
+        speaker: { name: "Cole Emmerich", photo: { getUrl: () => "/img/speakers/3.jpg" } },
+      },
+    ],
+  };
+
+
   // Determine if user is logged in (for now, just a mock)
   const isAuthenticated = false;
 
@@ -42,6 +68,7 @@ const Home: React.FC = () => {
       <main id="main">
         <AboutUs />
         <WhatWeOfferSection />
+        <PlansPricing schedules={schedules} />
       </main>
 
       <Footer settings={settings} isAuthenticated={isAuthenticated} appName="AfriGuard" />
