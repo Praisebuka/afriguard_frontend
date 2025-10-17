@@ -428,19 +428,13 @@ const Dashboard = () => {
       securityPosture: "unknown",
       targetType: targetData.targetType,
       riskProfile: targetAnalysis.riskLevel,
+      neuralPatterns: { anomalyScore: 6 },
+      deepLearningInsights: { securityMaturity: 8 },
+      mlThreatProfile: { attackProbability: 5 },
     };
 
     // Professional OSINT-based target assessment
-    const restrictedTargets = [
-      "example.com",
-      "test.com",
-      "localhost",
-      "127.0.0.1",
-      "192.168.1.1",
-      "sample.org",
-      "demo.net",
-      "placeholder.com",
-    ];
+    const restrictedTargets = [ "example.com", "test.com", "localhost", "127.0.0.1", "192.168.1.1", "sample.org", "demo.net", "placeholder.com" ];
 
     if (restrictedTargets.some((restricted) => target.includes(restricted))) {
       professionalAnalysis.isAccessible = false;
@@ -596,11 +590,8 @@ const Dashboard = () => {
         affectedComponents: ["Web Server", "SSL/TLS Configuration"],
         exploitComplexity: "medium",
         proofOfConcept: "openssl s_client -connect target:443 -tls1",
-        pocScreenshot:
-          "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80",
+        pocScreenshot: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80",
         endpointUrl: `https://${targetData.targetValue}:443`,
-        pocScreenshot:
-          "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80",
         riskScore: calculateRiskScore("medium", "potential", "medium"),
         businessImpact:
           "Data interception, compliance violations, customer trust loss",
@@ -633,15 +624,9 @@ const Dashboard = () => {
         status: "open" as const,
         affectedComponents: ["Web Application", "HTTP Headers"],
         exploitComplexity: "low",
-        proofOfConcept:
-          "curl -I https://target.com | grep -E '(X-Frame-Options|Content-Security-Policy)'",
-        pocScreenshot:
-          "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&q=80",
+        proofOfConcept: "curl -I https://target.com | grep -E '(X-Frame-Options|Content-Security-Policy)'",
+        pocScreenshot: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&q=80",
         endpointUrl: `https://${targetData.targetValue}/`,
-        pocScreenshot:
-          "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=800&q=80",
-        pocScreenshot:
-          "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&q=80",
         riskScore: calculateRiskScore("low", "unlikely", "low"),
         businessImpact:
           "Minor security posture degradation, potential for attack amplification",
@@ -719,11 +704,8 @@ const Dashboard = () => {
           affectedComponents: ["Search Function", "Comment System"],
           exploitComplexity: "low",
           proofOfConcept: "<script>alert('XSS')</script>",
-          pocScreenshot:
-            "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80",
+          pocScreenshot: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80",
           endpointUrl: `https://${targetData.targetValue}/search?q=<script>alert('XSS')</script>`,
-          pocScreenshot:
-            "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80",
           riskScore: calculateRiskScore("high", "confirmed", "high"),
           businessImpact:
             "Account takeover, data theft, malware distribution, reputation damage",
@@ -756,13 +738,9 @@ const Dashboard = () => {
           status: "open" as const,
           affectedComponents: ["Forms", "AJAX Endpoints"],
           exploitComplexity: "medium",
-          proofOfConcept:
-            "<form action='https://target.com/transfer' method='POST'><input name='amount' value='1000'><input name='to' value='attacker'></form>",
-          pocScreenshot:
-            "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80",
+          proofOfConcept: "<form action='https://target.com/transfer' method='POST'><input name='amount' value='1000'><input name='to' value='attacker'></form>",
+          pocScreenshot: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80",
           endpointUrl: `https://${targetData.targetValue}/transfer`,
-          pocScreenshot:
-            "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80",
           riskScore: calculateRiskScore("medium", "potential", "high"),
           businessImpact:
             "Unauthorized transactions, financial loss, regulatory violations",
@@ -801,9 +779,7 @@ const Dashboard = () => {
             "Brute force attack: hydra -l admin -P passwords.txt https://target.com/login",
           pocScreenshot:
             "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80",
-          endpointUrl: `https://${targetData.targetValue}/login`,
-          pocScreenshot:
-            "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80",
+          endpointUrl: `https://${targetData.targetValue}/login`, 
           riskScore: calculateRiskScore("high", "potential", "high"),
           businessImpact:
             "Complete account compromise, privilege escalation, data breach",
@@ -848,8 +824,6 @@ const Dashboard = () => {
           pocScreenshot:
             "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&q=80",
           endpointUrl: `ssh://${targetData.targetValue}:22`,
-          pocScreenshot:
-            "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&q=80",
           riskScore: calculateRiskScore("medium", "potential", "high"),
           businessImpact:
             "Remote system compromise, lateral movement, data exfiltration",
@@ -882,11 +856,8 @@ const Dashboard = () => {
           affectedComponents: ["DNS Configuration", "Email Security"],
           exploitComplexity: "low",
           proofOfConcept: "dig @target.com target.com AXFR",
-          pocScreenshot:
-            "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80",
+          pocScreenshot: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80",
           endpointUrl: `dns://${targetData.targetValue}`,
-          pocScreenshot:
-            "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80",
           riskScore: calculateRiskScore("low", "unlikely", "medium"),
           businessImpact:
             "Email spoofing, phishing attacks, information disclosure",
@@ -898,10 +869,7 @@ const Dashboard = () => {
     }
 
     // Critical vulnerabilities (full pentest + legacy systems)
-    if (
-      targetData.assessmentProfile === "fullPenTest" &&
-      (analysis.isLegacyInfrastructure || analysis.hasAdminInterfaces)
-    ) {
+    if ( targetData.assessmentProfile === "fullPenTest" && (analysis.isLegacyInfrastructure || analysis.hasAdminInterfaces) ) {
       const criticalVulnerabilities = [
         {
           id: "prof-sqli-001",
@@ -933,11 +901,8 @@ const Dashboard = () => {
           exploitComplexity: "low",
           proofOfConcept:
             "admin' UNION SELECT 1,username,password FROM users--",
-          pocScreenshot:
-            "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80",
+          pocScreenshot: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80",
           endpointUrl: `https://${targetData.targetValue}/admin/login?username=admin'--&password=anything`,
-          pocScreenshot:
-            "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80",
           riskScore: calculateRiskScore("critical", "confirmed", "high"),
           businessImpact:
             "Complete database compromise, data theft, system takeover, regulatory fines",
@@ -973,11 +938,8 @@ const Dashboard = () => {
           affectedComponents: ["File Upload", "Deserialization Handler"],
           exploitComplexity: "low",
           proofOfConcept: "filename=test.jpg; cat /etc/passwd",
-          pocScreenshot:
-            "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&q=80",
+          pocScreenshot: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&q=80",
           endpointUrl: `https://${targetData.targetValue}/upload`,
-          pocScreenshot:
-            "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&q=80",
           riskScore: calculateRiskScore("critical", "confirmed", "high"),
           businessImpact:
             "Complete system compromise, data destruction, ransomware deployment, business disruption",
