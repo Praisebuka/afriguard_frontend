@@ -2712,80 +2712,76 @@ const Dashboard = () => {
       };
 
   const downloadPDFReport = async (content: string, target: string) => {
+    
+    // Create a simple text-based report as fallback
+    const createTextReport = () => {
+      const timestamp = new Date().toISOString().split("T")[0];
+      const cleanTarget = target.replace(/[^a-zA-Z0-9]/g, "_");
+      const filename = `AfriGuard_Security_Report_${cleanTarget}_${timestamp}.txt`;
+    
+      const textContent = `
+        AfriGuard PROFESSIONAL SECURITY ASSESSMENT REPORT
+        =================================================
+    
+        Target: ${target}
+        Generated: ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}
+        Report Type: Comprehensive Security Assessment
+    
+        EXECUTIVE SUMMARY
+        -----------------
+        This comprehensive security assessment identified ${scanResults?.vulnerabilities?.length || 0} vulnerabilities across the target infrastructure.
+        Immediate attention is required for critical and high-priority issues.
+    
+        VULNERABILITY FINDINGS
+        ----------------------
+        ${ scanResults?.vulnerabilities ?.map( (vuln: any, index: number) => `
+        ${index + 1}. ${vuln.title}
+          Severity: ${vuln.severity.toUpperCase()}
+          CVSS: ${vuln.cvss || "N/A"}
+          Category: ${vuln.owaspCategory || vuln.category}
+                
+          Description: ${vuln.description}
+                
+          Impact: ${vuln.impact}
+                
+          Remediation: ${vuln.remediation}
+                
+          ---
+        `,
+        ).join("") || "No vulnerabilities found."
+    }
+    
+      RECOMMENDATIONS
+      ---------------
+      • Address all critical and high-severity vulnerabilities within 24-48 hours
+      • Implement continuous security monitoring
+      • Conduct regular vulnerability assessments
+      • Ensure compliance with industry standards (OWASP, NIST)
+      
+      ---
+      AfriGuard Security Platform
+      © ${new Date().getFullYear()} - Military-Grade Security Assessment
+      This report contains confidential information. Distribution restricted to authorized personnel.
+      `;
+    
+      const blob = new Blob([textContent], { type: "text/plain;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = filename;
+      link.style.display = "none";
+    
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    
+      return filename;
+    };
+
+    
     try {
       console.log("Starting PDF generation...");
-
-      // Create a simple text-based report as fallback
-      const createTextReport = () => {
-        const timestamp = new Date().toISOString().split("T")[0];
-        const cleanTarget = target.replace(/[^a-zA-Z0-9]/g, "_");
-        const filename = `AfriGuard_Security_Report_${cleanTarget}_${timestamp}.txt`;
-
-        const textContent = `
-          AfriGuard PROFESSIONAL SECURITY ASSESSMENT REPORT
-          =================================================
-
-          Target: ${target}
-          Generated: ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}
-          Report Type: Comprehensive Security Assessment
-
-          EXECUTIVE SUMMARY
-          -----------------
-          This comprehensive security assessment identified ${scanResults?.vulnerabilities?.length || 0} vulnerabilities across the target infrastructure.
-          Immediate attention is required for critical and high-priority issues.
-
-          VULNERABILITY FINDINGS
-          ----------------------
-          ${
-            scanResults?.vulnerabilities
-              ?.map(
-                (vuln: any, index: number) => `
-          ${index + 1}. ${vuln.title}
-            Severity: ${vuln.severity.toUpperCase()}
-            CVSS: ${vuln.cvss || "N/A"}
-            Category: ${vuln.owaspCategory || vuln.category}
-            
-            Description: ${vuln.description}
-            
-            Impact: ${vuln.impact}
-            
-            Remediation: ${vuln.remediation}
-            
-            ---
-          `,
-    )
-    .join("") || "No vulnerabilities found."
-}
-
-RECOMMENDATIONS
----------------
-• Address all critical and high-severity vulnerabilities within 24-48 hours
-• Implement continuous security monitoring
-• Conduct regular vulnerability assessments
-• Ensure compliance with industry standards (OWASP, NIST)
-
----
-AfriGuard Security Platform
-© ${new Date().getFullYear()} - Military-Grade Security Assessment
-This report contains confidential information. Distribution restricted to authorized personnel.
-`;
-
-        const blob = new Blob([textContent], {
-          type: "text/plain;charset=utf-8",
-        });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = filename;
-        link.style.display = "none";
-
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
-
-        return filename;
-      };
 
       // Try PDF generation first
       try {
