@@ -7,8 +7,8 @@ import PlansPricing from "../pricing/pricing.page";
 import Partners from "../partners/partners.page";
 import ContactUs from "../contact";
 import Faq from "../faq/faq.page";
-import Header from "@/components/header/Header";
-import Footer from "@/components/footer/Footer";
+import Header from "@/components/header/header";
+import Footer from "@/components/footer/footer";
 
 const Home: React.FC = () => {
   // Simulate Laravel-like route helper
