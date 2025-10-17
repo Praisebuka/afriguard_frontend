@@ -24,7 +24,8 @@ a {
 a:hover,
 a:active,
 a:focus {
-  color: #f8234a;
+  // color: #f8234a;
+  color: #00FF7F;
   outline: none;
   text-decoration: none;
 }
@@ -666,7 +667,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #about:before {
   content: "";
-  background: rgba(13, 20, 41, 0.8);
+  // background: rgba(13, 20, 41, 0.8);
   position: absolute;
   bottom: 0;
   top: 0;
@@ -796,11 +797,11 @@ body.mobile-nav-active #mobile-nav-toggle {
 # Schedule Section
 --------------------------------------------------------------*/
 
-#schedule {
+#pricing {
   padding: 60px 0 60px 0;
 }
 
-#schedule .nav-tabs {
+#pricing .nav-tabs {
   text-align: center;
   margin: auto;
   display: block;
@@ -808,13 +809,13 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-bottom: 30px;
 }
 
-#schedule .nav-tabs li {
+#pricing .nav-tabs li {
   display: inline-block;
   margin-bottom: 0;
   margin-right: 10px;
 }
 
-#schedule .nav-tabs a {
+#pricing .nav-tabs a {
   border: none;
   border-radius: 50px;
   font-weight: 600;
@@ -823,39 +824,39 @@ body.mobile-nav-active #mobile-nav-toggle {
   padding: 10px 100px;
 }
 
-#schedule .nav-tabs a.active {
+#pricing .nav-tabs a.active {
   background-color: #00FF7F;
   color: #fff;
 }
 
-#schedule .sub-heading {
+#pricing .sub-heading {
   text-align: center;
   font-size: 18px;
   font-style: italic;
   margin: 0 auto 30px auto;
 }
 
-#schedule .tab-pane {
+#pricing .tab-pane {
   transition: ease-in-out .2s;
 }
 
-#schedule .schedule-item {
+#pricing .schedule-item {
   border-bottom: 1px solid #cad4f6;
   padding-top: 15px;
   padding-bottom: 15px;
   transition: background-color ease-in-out 0.3s;
 }
 
-#schedule .schedule-item:hover {
+#pricing .schedule-item:hover {
   background-color: #fff;
 }
 
-#schedule .schedule-item time {
+#pricing .schedule-item time {
   padding-bottom: 5px;
   display: inline-block;
 }
 
-#schedule .schedule-item .speaker {
+#pricing .schedule-item .speaker {
   width: 60px;
   height: 60px;
   overflow: hidden;
@@ -864,7 +865,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin: 0 10px 10px 0;
 }
 
-#schedule .schedule-item .speaker img {
+#pricing .schedule-item .speaker img {
   height: 100%;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -872,20 +873,20 @@ body.mobile-nav-active #mobile-nav-toggle {
   transition: all ease-in-out 0.3s;
 }
 
-#schedule .schedule-item h4 {
+#pricing .schedule-item h4 {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 5px;
 }
 
-#schedule .schedule-item h4 span {
+#pricing .schedule-item h4 span {
   font-style: italic;
   color: #19328e;
   font-weight: normal;
   font-size: 16px;
 }
 
-#schedule .schedule-item p {
+#pricing .schedule-item p {
   font-style: italic;
   color: #152b79;
   margin-bottom: 0;
@@ -1563,7 +1564,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 @media (min-width: 991px) {
-  #schedule .sub-heading {
+  #pricing .sub-heading {
     width: 75%;
   }
 }
@@ -1620,7 +1621,7 @@ body.mobile-nav-active #mobile-nav-toggle {
     font-size: 16px;
   }
 
-  #schedule .nav-tabs a {
+  #pricing .nav-tabs a {
     padding: 8px 60px;
   }
 }
@@ -1640,7 +1641,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 @media (max-width: 767px) {
-  #schedule .nav-tabs a {
+  #pricing .nav-tabs a {
     padding: 8px 50px;
   }
 }
@@ -1652,7 +1653,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 @media (max-width: 480px) {
-  #schedule .nav-tabs a {
+  #pricing .nav-tabs a {
     padding: 8px 30px;
   }
 }
@@ -1661,4 +1662,8 @@ body.mobile-nav-active #mobile-nav-toggle {
   #subscribe button {
     margin-top: 10px;
   }
+}
+
+.border {
+  border: none !important;
 }
