@@ -110,11 +110,13 @@ button.btn-for-logins {
   margin-top: 30px;
   display: flex;
   flex-direction: column;
-  p {
+}
+
+.social p {
     align-items: center;
     text-align: center;
-  }
 }
+  
 .social div{
   background: red;
   width: 150px;
