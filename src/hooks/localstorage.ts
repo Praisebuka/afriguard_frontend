@@ -7,7 +7,7 @@ const loginUser = async (email: string, password: string): Promise<IUserModel | 
   try {
     console.log("inside the try catch already ");
     // const responseState = await auth.loginAction({ accountNumber, transactionPin });
-    const response = await fetch(`http://localhost:8000/api/v1/login`, {
+    const response = await fetch(`https://afriguard.myfamilycompanion.org/api/v1/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ const loginUser = async (email: string, password: string): Promise<IUserModel | 
 
 const registerUser = async (name: string, email: string, phone: string, password: string): Promise<IUserModel | null> => {
   try {
-    const response = await fetch(`http://localhost:8000/api/v1/register`, {
+    const response = await fetch(`https://afriguard.myfamilycompanion.org/api/v1/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
