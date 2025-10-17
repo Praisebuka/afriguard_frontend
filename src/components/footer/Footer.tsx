@@ -1,15 +1,7 @@
 import React from 'react';
 
 interface FooterProps {
-  settings: {
-    footer_description?: string;
-    contact_phone: string;
-    contact_email: string;
-    footer_twitter?: string;
-    footer_facebook?: string;
-    footer_instagram?: string;
-    footer_linkedin?: string;
-  };
+  settings: { footer_description?: string, contact_phone: string, contact_email: string, footer_twitter?: string, footer_facebook?: string, footer_instagram?: string, footer_linkedin?: string };
   isAuthenticated: boolean;
   appName?: string;
 }
