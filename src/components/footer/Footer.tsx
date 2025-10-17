@@ -8,11 +8,7 @@ interface FooterProps {
   appName?: string;
 }
 
-const Footer: React.FC<FooterProps> = ({
-  settings,
-  isAuthenticated,
-  appName = 'AfriGuard',
-}) => {
+const Footer: React.FC<FooterProps> = ({ settings, isAuthenticated, appName = 'AfriGuard', }) => {
   return (
     <footer id="footer">
       <div className="footer-top">
@@ -21,11 +17,10 @@ const Footer: React.FC<FooterProps> = ({
             <div className="col-lg-5 col-md-6 footer-info">
               <img src="/public/favicon.png" alt="AfriGuard" style={{ width: '7rem', height: '7rem' }} />
               
-              <p>{settings.footer_description ?? ''}</p>
+              <p> {settings.footer_description ?? ''} </p>
             </div>
 
             <div className="col-lg-2 col-md-6 footer-links">
-              {/* <h4> Home </h4> */}
               <ul>
                 <li>
                   <i className="fa fa-angle-right"></i>{' '}

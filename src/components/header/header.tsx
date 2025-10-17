@@ -1,9 +1,7 @@
 import "./header.styles.scss";
 import React from 'react';
 
-interface HeaderProps { currentRouteName: string, appName?: string,
-  route: (name: string) => string;
-}
+interface HeaderProps { currentRouteName: string, appName?: string, route: (name: string) => string }
 
 const Header: React.FC<HeaderProps> = ({ currentRouteName, appName = 'AfriGuard', route }) => {
   const isHome = currentRouteName === 'home';

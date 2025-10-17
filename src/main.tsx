@@ -5,8 +5,9 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 
 /* import { TempoDevtools } from 'tempo-devtools'; [deprecated] */
-/* TempoDevtools.init() [deprecated] */ const basename = import.meta.env
-  .BASE_URL;
+/* TempoDevtools.init() [deprecated] */ 
+// const basename = import.meta.env.BASE_URL;
+const basename = "https://afriguard.myfamilycompanion.org/api/v1";
 
 // Set dark mode by default
 document.documentElement.classList.add("dark");

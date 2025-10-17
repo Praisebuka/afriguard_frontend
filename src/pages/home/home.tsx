@@ -1,7 +1,5 @@
 import "./home.styles.scss";
 import React from "react";
-import Header from "@/components/header/Header";
-import Footer from "@/components/footer/Footer";
 import IntroSection from "../intro";
 import AboutUs from "../about";
 import WhatWeOfferSection from "../whatweoffer/whatweoffer.page";
@@ -9,6 +7,8 @@ import PlansPricing from "../pricing/pricing.page";
 import Partners from "../partners/partners.page";
 import ContactUs from "../contact";
 import Faq from "../faq/faq.page";
+import Header from "@/components/header/Header";
+import Footer from "@/components/footer/Footer";
 
 const Home: React.FC = () => {
   // Simulate Laravel-like route helper
@@ -111,7 +111,7 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <Header currentRouteName="home" route={route} appName="AfriGuard" />
+      <Header currentRouteName="home" route={route} appName="A-friGuard" />
       <IntroSection />
 
       <main id="main">
