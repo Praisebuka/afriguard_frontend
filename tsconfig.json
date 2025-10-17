@@ -6,6 +6,7 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "noEmitOnError": false,
+    "forceConsistentCasingInFileNames": true,
 
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
@@ -21,5 +22,6 @@
   },
   "include": ["src", "global.d.ts"],
   "exclude": [],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "forceConsistentCasingInFileNames": true
 }
