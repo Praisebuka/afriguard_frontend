@@ -3,7 +3,7 @@ import React from 'react';
 const ContactUs: React.FC = () => {
 
   return (
-    <section id="contact" className="section-bg wow fadeInUp">
+    <section id="contact" className="section-bg wow fadeInUp" style={{ background: '#fff' }}>
       <div className="container">
         <div className="section-header">
           <h2> Contact Us </h2>
@@ -15,7 +15,7 @@ const ContactUs: React.FC = () => {
             <div className="contact-address">
               <i className="ion-ios-location-outline"></i>
               <h3> Address </h3>
-              <address> Testing </address>
+              <address> 1600 Amphitheatre Parkway in Mountain View </address>
               <address> Lagos, Nigeria </address>
             </div>
           </div>
@@ -65,7 +65,7 @@ const ContactUs: React.FC = () => {
               <div className="validation"></div>
             </div>
 
-            <div className="text-center">
+            <div className="text-center" style={{ marginTop: '20px' }}>
               <button type="submit"> Send Message </button>
             </div>
           </form>

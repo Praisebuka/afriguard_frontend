@@ -10,7 +10,7 @@ const Faq: React.FC<FaqSectionProps> = ({ faqs }) => {
   const toggleFaq = (id: number) => { setOpenFaq(openFaq === id ? null : id) };
 
   return (
-    <section id="faq" className="wow fadeInUp">
+    <section id="faq" className="wow fadeInUp" style={{ background: '#fff' }}>
       <div className="container">
         <div className="section-header">
           <h2> F.A.Q </h2>
@@ -26,7 +26,7 @@ const Faq: React.FC<FaqSectionProps> = ({ faqs }) => {
                     <i className={`fa ${ openFaq === faq.id ? "fa-minus-circle" : "fa-plus-circle" }`}></i>
                   </a>
 
-                  <div id={`faq${faq.id}`} className={`collapse${openFaq === faq.id ? " show" : ""}`} data-parent="#faq-list" >
+                  <div id={`faq${faq.id}`} className={`collapse${openFaq === faq.id ? " show" : ""}`} data-parent="#faq-list">
                     <p> {faq.answer} </p>
                   </div>
                 </li>

@@ -582,7 +582,7 @@ const TargetSpecificationPanel = ({
               <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="relative z-10 flex items-center justify-center">
                 <Shield className="mr-3 h-6 w-6" />
-                <span className="font-bold text-lg"> INITIATE ELITE SCAN </span>
+                <span className="font-bold text-lg"> INITIATE SCAN </span>
                 <Zap className="ml-3 h-6 w-6" />
               </div>
               {!targetValue.trim() && (

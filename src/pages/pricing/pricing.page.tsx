@@ -16,7 +16,7 @@ const PlansPricing: React.FC<Props> = ({ schedules }) => {
   };
 
   return (
-    <section id="schedule" className="section-with-bg">
+    <section id="pricing" className="section-with-bg">
       <div className="container wow fadeInUp">
         <div className="section-header">
           <h2> Plans & Pricing </h2>

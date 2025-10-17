@@ -11,10 +11,10 @@ const Header: React.FC<HeaderProps> = ({ currentRouteName, appName = 'AfriGuard'
 
   return (
     <header id="header" className={!isHome ? 'header-fixed' : undefined}>
-      <div className="container" style={{ maxWidth: '1500px' }}>
+      <div className="container d-flex" style={{ maxWidth: '1500px', justifyContent: 'space-between' }}>
         <div id="logo" className="pull-left">
           <h1 style={{ textTransform: 'none' }}>
-            <a href={`${route('home')}#intro`}>
+            <a href={`${route('home')}`}>
               <span><i className="fa fa-shield" aria-hidden="true"></i></span>
               {appName}
             </a>

@@ -1,4 +1,6 @@
 import React from 'react';
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 interface FooterProps {
   settings: { footer_description?: string, contact_phone: string, contact_email: string, footer_twitter?: string, footer_facebook?: string, footer_instagram?: string, footer_linkedin?: string };
@@ -79,28 +81,27 @@ const Footer: React.FC<FooterProps> = ({
               </ul>
             </div>
 
-            <div className="col-lg-3 col-md-6 footer-contact">
-              <h4>Contact Us</h4>
+            <div className="col-lg-3 col-md-6 footer-contact" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              <h4> Contact Us </h4>
               <p>
-                {/* {settings.footer_address ?? ''}<br /> */}
-                <strong>Phone:</strong> {settings.contact_phone}
+                <strong> Phone: </strong> {settings.contact_phone}
                 <br />
-                <strong>Email:</strong> {settings.contact_email}
+                <strong> Email: </strong> {settings.contact_email}
                 <br />
               </p>
 
               <div className="social-links">
                 <a href={settings.footer_twitter ?? ''} className="twitter">
-                  <i className="fa fa-twitter"></i>
+                  <i className="fa-brands fa-x-twitter"></i>
                 </a>
                 <a href={settings.footer_facebook ?? ''} className="facebook">
-                  <i className="fa fa-facebook"></i>
+                  <i className="fa-brands fa-facebook"></i>
                 </a>
                 <a href={settings.footer_instagram ?? ''} className="instagram">
-                  <i className="fa fa-instagram"></i>
+                  <i className="fa-brands fa-instagram"></i>
                 </a>
                 <a href={settings.footer_linkedin ?? ''} className="linkedin">
-                  <i className="fa fa-linkedin"></i>
+                  <i className="fa-brands fa-linkedin"></i>
                 </a>
               </div>
             </div>
