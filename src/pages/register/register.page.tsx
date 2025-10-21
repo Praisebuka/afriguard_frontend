@@ -28,20 +28,31 @@ const Register = () => {
       return;
     }
 
-    setLoading(true); // Start loading
-    const user = await registerUser(data.name, data.email, data.phone, data.password);
-    setLoading(false); // Stop loading
+    setLoading(true);
 
-    if (!user) {
-      Swal.fire({ icon: 'error', title: 'Registration Failed', text: 'Could not register. Please try again.', });
-      return;
+    try {
+      
+      const user = await registerUser(data.name, data.email, data.phone, data.password);
+      if (user.token == "undefined" || user.token == null) {
+        Swal.fire({ icon: 'error', title: 'Registration Failed', text: 'Could not register. Please try again.', });
+        return;
+      }
+
+      Swal.fire({ icon: 'success', title: 'Registration Successful', text: 'Your account has been created!', timer: 3000,
+      }).then(() => {
+        navigate("/dashboard");
+      });
+      setLoading(false);
+
+    } catch (error: any) {
+      Swal.fire({ icon: 'error', title: 'Registration Failed', text: error.message,  });
+      setLoading(false);
+    } finally {
+      setLoading(false);
     }
-
-    Swal.fire({ icon: 'success', title: 'Registration Successful', text: 'Your account has been created!', timer: 3000,
-    }).then(() => {
-      navigate("/dashboard");
-    });
   };
+
+
 
   return (
     <>
