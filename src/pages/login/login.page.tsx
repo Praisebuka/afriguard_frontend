@@ -31,6 +31,7 @@ const Login = () => {
     const user = await loginUser(data.username, data.password);
     setLoading(false); // Stop loading
 
+    console.log(user);
     if (!user) {
       Swal.fire({ icon: 'error', title: 'Login Failed', text: 'Invalid username or password', });
       return;

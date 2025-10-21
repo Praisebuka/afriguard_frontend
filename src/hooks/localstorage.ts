@@ -6,8 +6,8 @@ export interface IUserModel { email: string; token?: string; name? :string }
 const loginUser = async (email: string, password: string): Promise<IUserModel | null> => {
   try {
     console.log("inside the try catch already ");
-    // const responseState = await auth.loginAction({ accountNumber, transactionPin });
-    const response = await fetch(`https://afriguard.myfamilycompanion.org/api/v1/login`, {
+
+    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -17,23 +17,21 @@ const loginUser = async (email: string, password: string): Promise<IUserModel | 
 
     const result = await response.json();
     console.log(response);
-    console.log(result);
+    console.log(result.message);
 
     if (response.ok && result.message === 'Login Successful') {
-      const user: IUserModel = {
-        email,
-        token: result?.token,
-        name: result.user?.name
-      };
+      const user: IUserModel = { email, token: result?.token, name: result.user?.name };
       localStorage.setItem(ACTIVE_USER, JSON.stringify(user));
       return user;
     }
+    
     return null;
   } catch (error) {
     console.error('Login API error:', error);
     return null;
   }
 };
+
 
 const registerUser = async (name: string, email: string, phone: string, password: string): Promise<IUserModel | null> => {
   try {
