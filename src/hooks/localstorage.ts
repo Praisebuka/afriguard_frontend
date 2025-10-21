@@ -1,12 +1,11 @@
+import Swal from "sweetalert2";
+
 const ACTIVE_USER = "active_user";
 
 export interface IUserModel { email: string; token?: string; name? :string }
-// const BASE_URL = import.meta.env.REACT_APP_BASE_URL || 'https://afriguard.myfamilycompanion.org/api/v1';
 
-const loginUser = async (email: string, password: string): Promise<IUserModel | null> => {
+const loginUser = async (email: string, password: string): Promise<IUserModel> => { 
   try {
-    console.log("inside the try catch already ");
-
     const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/login`, {
       method: 'POST',
       headers: {
@@ -16,19 +15,22 @@ const loginUser = async (email: string, password: string): Promise<IUserModel | 
     });
 
     const result = await response.json();
-    console.log(response);
-    console.log(result.message);
+    console.log('result message: ' + result.message);
+    Swal.fire({ icon: 'error', title: 'Error', text: result.message });
 
-    if (response.ok && result.message === 'Login Successful') {
-      const user: IUserModel = { email, token: result?.token, name: result.user?.name };
-      localStorage.setItem(ACTIVE_USER, JSON.stringify(user));
-      return user;
+    // If the response is NOT ok (e.g., 403, 404, 500)
+    if (!response.ok && (result.message !== 'Login Successful')) {
+      throw new Error(result.message || 'An unknown error occurred.');
     }
-    
-    return null;
+
+    // only runs on success
+    const user: IUserModel = { email, token: result?.token, name: result.user?.name };
+    localStorage.setItem(ACTIVE_USER, JSON.stringify(user));
+    return user;
+
   } catch (error) {
     console.error('Login API error:', error);
-    return null;
+    throw error;
   }
 };
 

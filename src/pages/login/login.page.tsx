@@ -22,25 +22,33 @@ const Login = () => {
     event.preventDefault();
 
     if (data.username === "" || data.password === "") {
-      setMessage("Please fill all the required fields");
-      Swal.fire({ icon: 'error', title: 'Error', text: 'Please fill all the required fields', });
+      Swal.fire({ icon: 'error', title: 'Error', text: 'Please fill all the required fields' });
       return;
     }
 
-    setLoading(true); // Start loading
-    const user = await loginUser(data.username, data.password);
-    setLoading(false); // Stop loading
+    setLoading(true);
 
-    console.log(user);
-    if (!user) {
-      Swal.fire({ icon: 'error', title: 'Login Failed', text: 'Invalid username or password', });
-      return;
+    try {
+      // TRY to log the user in
+      const user = await loginUser(data.username, data.password);
+      if (user.token == "undefined" || user.token == null) {
+        Swal.fire({ icon: 'error', title: 'Login Failed', text: 'Invalid username or password', });
+        return;
+      }
+
+      Swal.fire({ icon: 'success', title: 'Login Successful', text: `Welcome back, ${user.name}!`, timer: 3000,
+      }).then(() => {
+        navigate("/dashboard");
+      });
+      setLoading(false);
+
+    } catch (error: any) {
+      console.error("Caught login error:", error.message);
+      Swal.fire({ icon: 'error', title: 'Login Failed', text: error.message,  });
+      setLoading(false);
+    } finally {
+      setLoading(false);
     }
-
-    Swal.fire({ icon: 'success', title: 'Login Successful', text: 'Welcome back ' + `${user?.name}` + '!', timer: 3000,
-    }).then(() => {
-      navigate("/dashboard");
-    });
   };
 
   return (
