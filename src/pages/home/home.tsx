@@ -109,7 +109,7 @@ const Home: React.FC = () => {
   };
 
 
-  // Determine if user is logged in
+  // Determine if user is logged in    
   const isAuthenticated = false;
 
   return (
