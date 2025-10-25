@@ -43,21 +43,41 @@ const Home: React.FC = () => {
       {
         title: "Basic Surveillance",
         subtitle: "Facere provident incidunt quos voluptas.",
-        speaker: { name: "Brenden Legros", photo: { getUrl: () => "/img/speakers/1.jpg" } },
+        speaker: { name: "Brenden Legros", photo: { getUrl: () => "/img/pricing/image1.png" } },
+      },
+      {
+        title: "Basic Surveillance",
+        subtitle: "Facere provident incidunt quos voluptas.",
+        speaker: { name: "Brenden Legros", photo: { getUrl: () => "/img/pricing/image2.png" } },
+      },
+      {
+        title: "Basic Surveillance",
+        subtitle: "Facere provident incidunt quos voluptas.",
+        speaker: { name: "Brenden Legros", photo: { getUrl: () => "/img/pricing/image3.png" } },
       },
     ],
     2: [
       {
         title: "Premium Security",
         subtitle: "Our most popular plan for advanced users.",
-        speaker: { name: "Hubert Hirthe", photo: { getUrl: () => "/img/speakers/2.jpg" } },
+        speaker: { name: "Hubert Hirthe", photo: { getUrl: () => "/img/pricing/image4.png" } },
+      },
+      {
+        title: "Premium Security",
+        subtitle: "Our most popular plan for advanced users.",
+        speaker: { name: "Hubert Hirthe", photo: { getUrl: () => "/img/pricing/image5.png" } },
       },
     ],
     3: [
       {
         title: "Pro Monitoring",
         subtitle: "Best for organizations needing real-time alerts.",
-        speaker: { name: "Cole Emmerich", photo: { getUrl: () => "/img/speakers/3.jpg" } },
+        speaker: { name: "Cole Emmerich", photo: { getUrl: () => "/img/pricing/image6.png" } },
+      },
+      {
+        title: "Pro Monitoring",
+        subtitle: "Best for organizations needing real-time alerts.",
+        speaker: { name: "Cole Emmerich", photo: { getUrl: () => "/img/pricing/image7.png" } },
       },
     ],
   };
@@ -114,7 +134,7 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <Header currentRouteName="home" route={route} appName="A-friGuard" />
+      <Header currentRouteName="home" route={route} appName="AfriGuard" />
       <IntroSection />
 
       <main id="main">
