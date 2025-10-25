@@ -29,7 +29,7 @@ const Home: React.FC = () => {
   };
 
   const settings = {
-    footer_description: "In alias aperiam. Placeat tempore facere. Officiis voluptate ipsam vel eveniet est dolor et totam porro. Perspiciatis ad omnis fugit molestiae recusandae possimus. Aut consectetur id quis. In inventore consequatur ad voluptate cupiditate debitis accusamus repellat cumque.",
+    // footer_description: "Afriguard's offers value to SMEs looking for automated operation, easy implementation, offline capability & continuous security monitoring with accessible results and actionable guidance. This application is also supported with step-by-step YouTube walkthroughs that show exactly how the application works.",
     contact_phone: "+234 800 000 0000",
     contact_email: "support@afriguard.com",
     footer_twitter: "https://twitter.com/AfriGuard",
@@ -38,7 +38,7 @@ const Home: React.FC = () => {
     footer_linkedin: "https://linkedin.com/company/AfriGuard",
   };
 
-  const schedules = {
+  const pricing_data = {
     1: [
       {
         title: "Basic Surveillance",
@@ -119,13 +119,6 @@ const Home: React.FC = () => {
         answer: "Laborum modi aut dignissimos consectetur quis vel nihil. Deserunt nihil omnis in ducimus voluptate deserunt laudantium. Quis aut est modi odio nisi soluta. Et eveniet dolor enim laborum nulla consequatur culpa temporibus.",
       },
     ],
-    6: [
-      {
-        id: 6,
-        question: "Molestiae fuga doloremque praesentium voluptates dolores voluptas molestiae alias.",
-        answer: "Laborum modi aut dignissimos consectetur quis vel nihil. Deserunt nihil omnis in ducimus voluptate deserunt laudantium. Quis aut est modi odio nisi soluta. Et eveniet dolor enim laborum nulla consequatur culpa temporibus.",
-      },
-    ],
   };
 
 
@@ -140,7 +133,7 @@ const Home: React.FC = () => {
       <main id="main">
         <AboutUs />
         <WhatWeOfferSection />
-        <PlansPricing schedules={schedules} />
+        <PlansPricing pricing_data={pricing_data} />
         <Partners />
         <ContactUs />
         <Faq faqs={faqQuestions} />

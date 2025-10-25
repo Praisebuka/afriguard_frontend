@@ -6,7 +6,7 @@ const IntroSection = () => (
       <p className="mb-4 pb-0"> Built for SMEs. Watch our tutorial video on how to get started </p>
       <a href={'https://www.youtube.com/watch?v=tdLUlTP5TKo'} className="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true" target="_blank"></a>
 
-      <a href="#about" className="about-btn scrollto"> About AfriGuard </a>
+      <a id="about" href="#about" className="about-btn scrollto"> About AfriGuard </a>
     </div>
   </section>
 );

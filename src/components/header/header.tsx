@@ -8,7 +8,8 @@ const Header: React.FC<HeaderProps> = ({ currentRouteName, appName = 'AfriGuard'
   const baseRoute = isHome ? '' : route('home');
 
   return (
-    <header id="header" className={!isHome ? 'header-fixed' : undefined}>
+    // <header id="header" className={!isHome ? 'header-fixed' : undefined}>
+    <header id="header" className={!isHome ? 'header-fixed' : undefined} style={{ background: '#101B2D' }}>
       <div className="container d-flex" style={{ maxWidth: '1500px', justifyContent: 'space-between' }}>
         <div id="logo" className="pull-left">
           <h1 style={{ textTransform: 'none' }}>
