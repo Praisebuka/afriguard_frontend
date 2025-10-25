@@ -4,9 +4,9 @@ interface Speaker { name: string; photo: { getUrl: () => string } }
 
 interface Schedule { title: string; subtitle: string; speaker?: Speaker }
 
-interface Props { schedules: Record<number, Schedule[]> }
+interface Props { pricing_data: Record<number, Schedule[]> }
 
-const PlansPricing: React.FC<Props> = ({ schedules }) => {
+const PlansPricing: React.FC<Props> = ({ pricing_data }) => {
   const [activeTab, setActiveTab] = useState<number>(1);
 
   const planName = (key: number) => {
@@ -24,7 +24,7 @@ const PlansPricing: React.FC<Props> = ({ schedules }) => {
         </div>
 
         <ul className="nav nav-tabs" role="tablist">
-          {Object.entries(schedules).map(([keyStr, day]) => {
+          {Object.entries(pricing_data).map(([keyStr, day]) => {
             const key = Number(keyStr);
             return (
               <li className="nav-item" key={key}>
@@ -39,7 +39,7 @@ const PlansPricing: React.FC<Props> = ({ schedules }) => {
         <h3 className="sub-heading"> Here's what each plan includes: </h3>
 
         <div className="tab-content row justify-content-center">
-          {Object.entries(schedules).map(([keyStr, day]) => {
+          {Object.entries(pricing_data).map(([keyStr, day]) => {
             const key = Number(keyStr);
             return (
               <div role="tabpanel" className={`col-lg-9 tab-pane fade${key === activeTab ? ' show active' : ''}`} id={`day-${key}`} key={key}>
