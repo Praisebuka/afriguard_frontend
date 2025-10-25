@@ -17,7 +17,10 @@ const Footer: React.FC<FooterProps> = ({ settings, isAuthenticated, appName = 'A
             <div className="col-lg-5 col-md-6 footer-info">
               <img src="/public/favicon.png" alt="AfriGuard" style={{ width: '7rem', height: '7rem' }} />
               
-              <p> {settings.footer_description ?? ''} </p>
+              {/* <p> {settings.footer_description ?? ''} </p> */}
+              <p> Afriguard's offers value to SMEs looking for automated operation, easy implementation, offline capability & continuous security monitoring with accessible results and actionable guidance. 
+                <br /> <br /> This application is also supported with step-by-step YouTube walkthroughs that show exactly how the application works. 
+              </p>
             </div>
 
             <div className="col-lg-2 col-md-6 footer-links">
