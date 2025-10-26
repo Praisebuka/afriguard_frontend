@@ -15,7 +15,7 @@ const loginUser = async (email: string, password: string): Promise<IUserModel> =
     });
 
     const result = await response.json();
-    console.log('result message: ' + result.message);
+    // console.log('result message: ' + result.message);
     
     if (!response.ok && (result.message !== 'Login Successful')) {
       Swal.fire({ icon: 'error', title: 'Error', text: result.message });
