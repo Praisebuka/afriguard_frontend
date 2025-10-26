@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-interface Speaker { name: string; photo: { getUrl: () => string } }
+interface PriceTag { name: string; photo: { getUrl: () => string } }
 
-interface Schedule { title: string; subtitle: string; speaker?: Speaker }
+interface Schedule { title: string; subtitle: string; price_tag?: PriceTag }
 
 interface Props { pricing_data: Record<number, Schedule[]> }
 
@@ -51,14 +51,14 @@ const PlansPricing: React.FC<Props> = ({ pricing_data }) => {
                       </time>
                     </div>
                     <div className="col-md-10">
-                      {schedule.speaker && (
+                      {schedule.price_tag && (
                         <div className="speaker">
-                          <img src={schedule.speaker.photo.getUrl()} alt={schedule.speaker.name} />
+                          <img src={schedule.price_tag.photo.getUrl()} alt={schedule.price_tag.name} />
                         </div>
                       )}
                       <h4>
                         {schedule.title}{' '}
-                        {schedule.speaker && <span>{schedule.speaker.name} </span>}
+                        {schedule.price_tag && <span>{schedule.price_tag.name} </span>}
                       </h4>
                       <p>{schedule.subtitle}</p>
                     </div>

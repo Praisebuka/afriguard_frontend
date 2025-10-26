@@ -43,41 +43,41 @@ const Home: React.FC = () => {
       {
         title: "Basic Surveillance",
         subtitle: "Facere provident incidunt quos voluptas.",
-        speaker: { name: "Brenden Legros", photo: { getUrl: () => "/img/pricing/image1.png" } },
+        price_tag: { name: "going for $20.99 only", photo: { getUrl: () => "/img/pricing/image1.png" } },
       },
       {
         title: "Basic Surveillance",
         subtitle: "Facere provident incidunt quos voluptas.",
-        speaker: { name: "Brenden Legros", photo: { getUrl: () => "/img/pricing/image2.png" } },
+        price_tag: { name: "going for $20.99 only", photo: { getUrl: () => "/img/pricing/image2.png" } },
       },
       {
         title: "Basic Surveillance",
         subtitle: "Facere provident incidunt quos voluptas.",
-        speaker: { name: "Brenden Legros", photo: { getUrl: () => "/img/pricing/image3.png" } },
+        price_tag: { name: "going for $20.99 only", photo: { getUrl: () => "/img/pricing/image3.png" } },
       },
     ],
     2: [
       {
         title: "Premium Security",
         subtitle: "Our most popular plan for advanced users.",
-        speaker: { name: "Hubert Hirthe", photo: { getUrl: () => "/img/pricing/image4.png" } },
+        price_tag: { name: "going for $60.66 only", photo: { getUrl: () => "/img/pricing/image4.png" } },
       },
       {
         title: "Premium Security",
         subtitle: "Our most popular plan for advanced users.",
-        speaker: { name: "Hubert Hirthe", photo: { getUrl: () => "/img/pricing/image5.png" } },
+        price_tag: { name: "going for $60.66 only", photo: { getUrl: () => "/img/pricing/image5.png" } },
       },
     ],
     3: [
       {
         title: "Pro Monitoring",
         subtitle: "Best for organizations needing real-time alerts.",
-        speaker: { name: "Cole Emmerich", photo: { getUrl: () => "/img/pricing/image6.png" } },
+        price_tag: { name: "going for $100 only", photo: { getUrl: () => "/img/pricing/image6.png" } },
       },
       {
         title: "Pro Monitoring",
         subtitle: "Best for organizations needing real-time alerts.",
-        speaker: { name: "Cole Emmerich", photo: { getUrl: () => "/img/pricing/image7.png" } },
+        price_tag: { name: "going for $100 only", photo: { getUrl: () => "/img/pricing/image7.png" } },
       },
     ],
   };
