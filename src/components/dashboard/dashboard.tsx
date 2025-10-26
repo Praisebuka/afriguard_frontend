@@ -6,8 +6,10 @@ import VulnerabilityDashboard from "./VulnerabilityDashboard";
 import { Button } from "../ui/button";
 import { Shield, AlertTriangle, RefreshCw, CheckCircle, Eye, LogOut, LogIn } from "lucide-react";
 import { useNavigate } from "react-router";
-import { getActiveUser, IUserModel, removeActiveUser } from "@/hooks/localstorage";
+import { getActiveUser, getNmapVuln, IUserModel, removeActiveUser } from "@/hooks/localstorage";
 import Swal from "sweetalert2";
+
+export interface INmapModel { target: string; }
 
 const Dashboard = () => {
   const [scanInProgress, setScanInProgress] = useState(false);
@@ -16,6 +18,8 @@ const Dashboard = () => {
   const [selectedTab, setSelectedTab] = useState("dashboard");
   const [scanError, setScanError] = useState<string | null>(null);
   const [hasPerformedScan, setHasPerformedScan] = useState(false);
+  const [data, setData] = useState<INmapModel>({ target: "" });
+  const [loading, setLoading] = useState<boolean>(false);
 
   const navigate = useNavigate();
   const [activeUser, setActiveUser] = useState<IUserModel>();
@@ -126,15 +130,10 @@ const Dashboard = () => {
       return validation;
     };
 
-    const targetAnalysis = validateAndAnalyzeTarget(
-      targetData.targetType,
-      targetData.targetValue,
-    );
+    const targetAnalysis = validateAndAnalyzeTarget( targetData.targetType, targetData.targetValue, );
 
     if (!targetAnalysis.isValid) {
-      setScanError(
-        `Invalid ${targetData.targetType} format - professional assessment requires valid targets`,
-      );
+      setScanError( `Invalid ${targetData.targetType} format - professional assessment requires valid targets`, );
       return;
     }
 
@@ -192,6 +191,39 @@ const Dashboard = () => {
     };
 
     executeProfessionalScan();
+
+    
+    const handleFormSubmit = async () => {
+      event.preventDefault();
+    
+      if (targetData.targetValue === "") {
+        Swal.fire({ icon: 'error', title: 'Error', text: 'Please provide your target url or IP address' });
+        return;
+      }
+    
+      setLoading(true);
+    
+      try {
+        // Get nmap results
+        const response = await getNmapVuln(targetData.targetValue);
+        if (response == null) {
+          Swal.fire({ icon: 'error', title: 'Error', text: 'Nmap Scan Failed', });
+          return;
+        }
+    
+        Swal.fire({ icon: 'success', title: 'Success!', text: 'We will notify you again as soon as the scan is complete via notification & email. This process typically takes about 2-3 minutes'});
+        setLoading(false);
+    
+      } catch (error: any) {
+        console.error("Caught nmap error:", error.message);
+        Swal.fire({ icon: 'error', title: 'Nmap Scan Status', text: error.message,  });
+        setLoading(false);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    handleFormSubmit();
   };
 
   const generateProfessionalResults = (

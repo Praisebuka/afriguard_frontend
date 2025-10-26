@@ -242,11 +242,7 @@ const TargetSpecificationPanel = ({
             >
               <Network className="mr-2 h-4 w-4 text-emerald-400" />
               Target{" "}
-              {targetType === "domain"
-                ? "Domain"
-                : targetType === "ipv4"
-                  ? "IPv4 Address"
-                  : "IPv6 Address"}
+              {targetType === "domain" ? "Domain" : targetType === "ipv4" ? "IPv4 Address" : "IPv6 Address"}
             </Label>
             <div className="relative">
               <Input
@@ -255,6 +251,7 @@ const TargetSpecificationPanel = ({
                 value={targetValue}
                 onChange={(e) => setTargetValue(e.target.value)}
                 className="bg-white/90 dark:bg-slate-800/50 border-slate-300 dark:border-slate-600 text-slate-900 dark:text-slate-100 placeholder:text-slate-500 dark:placeholder:text-slate-400 focus:border-emerald-500 focus:ring-emerald-500/20 backdrop-blur-sm transition-all duration-300 pl-10"
+                required
               />
               <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
                 {targetType === "domain" ? (

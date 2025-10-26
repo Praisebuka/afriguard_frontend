@@ -4,6 +4,8 @@ const ACTIVE_USER = "active_user";
 
 export interface IUserModel { email: string; token?: string; name? :string }
 
+export interface INmapModel { target: string; }
+
 const loginUser = async (email: string, password: string): Promise<IUserModel> => { 
   try {
     const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/login`, {
@@ -85,4 +87,52 @@ const removeActiveUser = () => {
   localStorage.removeItem(ACTIVE_USER);
 };
 
-export { ACTIVE_USER, loginUser, getActiveUser, removeActiveUser, registerUser };
+
+
+const getNmapVuln = async (target: string): Promise<INmapModel | null> => {
+  const user = getActiveUser();
+  if (!user || !user.token) {
+    Swal.fire({ icon: 'error', title: 'Error!', text: 'User not authenticated. Please log in & try again' });
+    throw new Error('User not authenticated. Please log in & try again.');
+  }
+
+  try {
+
+    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/nmap-scan`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${user.token}`,
+      },
+      body: JSON.stringify({ target }),
+    });
+
+    // const result = await response.json();
+    const result = await response.json().catch(() => ({}));
+    console.log('result message: ' + result.message);
+
+    if (!response.ok && (result.message !== 'Scan request queued successfully')) {
+      let errorMessage = 'An unknown error occurred.';
+
+      if (result.errors) {
+        const firstErrorKey = Object.keys(result.errors)[0]; 
+        errorMessage = result.errors[firstErrorKey][0];  
+      } else if (result.message) {
+        errorMessage = result.message; 
+      }
+      
+      throw new Error(errorMessage);
+    }
+
+    const resp: INmapModel = { target: result?.data };
+    return resp;
+
+  } catch (error) {
+    console.error('Nmap Calls error:', error);
+    throw error;
+  }
+};
+
+
+export { ACTIVE_USER, loginUser, getActiveUser, removeActiveUser, registerUser, getNmapVuln };
