@@ -7,22 +7,22 @@ Afriguard's MVP stage project offers value to SMEs businesses looking for automa
 
 Make sure you have NodeJs and npm (or yarn/pnpm) installed run these commands to confirm
 ```bash
-    node -v
+  node -v
 ```
 
 ```bash
-    npm -v
+  npm -v
 ```
 
 
 #If not installed, run:
 ```bash 
-    sudo apt update
+  sudo apt update
 ```
 &
 
 ```bash
-    sudo apt install nodejs npm -y
+  sudo apt install nodejs npm -y
 ```
 
 
@@ -30,29 +30,29 @@ Make sure you have NodeJs and npm (or yarn/pnpm) installed run these commands to
 Clone the repository
 
 ```bash
-    git clone https://github.com/Praisebuka/afriguard_frontend.git
+  git clone https://github.com/Praisebuka/afriguard_frontend.git
 ```
 
 Navigate to project folder
 ```bash
-    cd afriguard_frontend
+  cd afriguard_frontend
 ```
 
 Duplicate the .env.example file in the repo and rename yours to .env so it works for your local
 
 Install dependencies
 ```bash
-    npm install
+  npm install
 ```
 
 or (if using yarn)
 ```bash
-    yarn install
+  yarn install
 ```
 
 Start the development server
 ```bash
-    npm run dev
+  npm run dev
 ```
 
 
