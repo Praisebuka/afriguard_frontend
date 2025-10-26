@@ -15,7 +15,7 @@ Make sure you have NodeJs and npm (or yarn/pnpm) installed run these commands to
 ```
 
 
-#If not installed, run:
+If not installed, run:
 ```bash 
   sudo apt update
 ```
