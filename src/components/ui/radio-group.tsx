@@ -30,6 +30,7 @@ const RadioGroupItem = React.forwardRef<
         className
       )}
       {...props}
+      style={{ border: "var(--bs-border-width) var(--bs-border-style) var(--bs-border-color)!important" }}
     >
       <RadioGroupPrimitive.Indicator className="flex items-center justify-center">
         <CheckIcon className="h-3.5 w-3.5 fill-primary" />
